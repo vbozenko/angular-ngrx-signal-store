@@ -56,6 +56,12 @@
     },
     {
       "path": "./libs/store/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/services/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/services/tsconfig.spec.json"
     }
   ]
 }

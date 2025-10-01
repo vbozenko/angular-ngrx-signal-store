@@ -8,8 +8,7 @@
     "declarationMap": true,
     "inlineSources": true,
     "sourceMap": true,
-    "types": [],
-    "baseUrl": "../.."
+    "types": []
   },
   "include": [
     "src/**/*.ts"
