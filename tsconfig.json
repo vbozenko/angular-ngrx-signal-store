@@ -11,6 +11,11 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
+    "paths": {
+      "shared": [
+        "./dist/shared"
+      ]
+    },
     "importHelpers": true,
     "target": "ES2022",
     "module": "preserve"
@@ -29,6 +34,12 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/shared/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/shared/tsconfig.spec.json"
     }
   ]
 }
