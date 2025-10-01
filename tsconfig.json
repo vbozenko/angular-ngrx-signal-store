@@ -11,9 +11,19 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
+    "baseUrl": ".",
     "paths": {
       "shared": [
-        "./dist/shared"
+        "./dist/shared",
+        "./libs/shared/src/public-api"
+      ],
+      "store": [
+        "./dist/store",
+        "./libs/store/src/public-api"
+      ],
+      "services": [
+        "./dist/services",
+        "./libs/services/src/public-api"
       ]
     },
     "importHelpers": true,
@@ -40,6 +50,12 @@
     },
     {
       "path": "./libs/shared/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/store/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/store/tsconfig.spec.json"
     }
   ]
 }

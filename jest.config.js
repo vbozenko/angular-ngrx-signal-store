@@ -34,7 +34,9 @@ module.exports = {
   moduleNameMapper: {
     '^todo-lib$': '<rootDir>/libs/todo-lib/src/public-api.ts',
     '^ui-components$': '<rootDir>/libs/ui-components/src/public-api.ts',
-    '^shared$': '<rootDir>/libs/shared/src/public-api.ts'
+    '^shared$': '<rootDir>/libs/shared/src/public-api.ts',
+    '^store$': '<rootDir>/libs/store/src/public-api.ts',
+    '^services$': '<rootDir>/libs/services/src/public-api.ts'
   },
   
   transformIgnorePatterns: [
@@ -50,5 +52,13 @@ module.exports = {
   // Additional configuration to avoid Haste map conflicts
   modulePathIgnorePatterns: [
     '<rootDir>/dist/'
-  ]
+  ],
+  
+  // Use all available CPU cores for parallel testing
+  maxWorkers: '100%',
+  
+  // Additional performance optimizations
+  workerIdleMemoryLimit: '512MB',
+  detectLeaks: true,
+  logHeapUsage: true
 };
