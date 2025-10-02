@@ -1,6 +1,16 @@
 {
   "name": "store",
   "version": "0.0.1",
+  "main": "src/public-api.ts",
+  "module": "src/public-api.ts", 
+  "types": "src/public-api.ts",
+  "exports": {
+    ".": {
+      "types": "./src/public-api.ts",
+      "import": "./src/public-api.ts",
+      "require": "./src/public-api.ts"
+    }
+  },
   "peerDependencies": {
     "@angular/common": "^20.3.0",
     "@angular/core": "^20.3.0",

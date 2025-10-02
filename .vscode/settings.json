@@ -1,5 +1,28 @@
 {
-  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.preferences.includePackageJsonAutoImports": "on",
   "typescript.suggest.autoImports": true,
-  "typescript.preferences.importModuleSpecifier": "shortest"
+  "typescript.preferences.importModuleSpecifier": "shortest",
+  "typescript.suggest.includeCompletionsForModuleExports": true,
+  "typescript.suggest.includeCompletionsForImportStatements": true,
+  "typescript.suggest.autoImports.includeInternalModules": "on",
+  "typescript.suggest.autoImports.includeExternalModules": true,
+  "typescript.preferences.useLabelDetailsInCompletionEntries": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.suggest.paths": true,
+  "typescript.workspaceSymbols.scope": "allOpenProjects",
+  "typescript.suggest.enabled": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports.includePackageJsonAutoImports": "on",
+  "typescript.preferences.includeCompletionsWithSnippetText": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/out-tsc": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/out-tsc/**": true
+  }
 }

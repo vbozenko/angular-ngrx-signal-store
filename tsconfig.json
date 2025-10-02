@@ -11,19 +11,30 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
-    "baseUrl": ".",
     "paths": {
       "shared": [
-        "./dist/shared",
-        "./libs/shared/src/public-api"
+        "./libs/shared/src/public-api.ts",
+        "./libs/shared/src/public-api",
+        "./dist/shared"
       ],
       "store": [
-        "./dist/store",
-        "./libs/store/src/public-api"
+        "./libs/store/src/index.ts",
+        "./libs/store/src/public-api.ts",
+        "./libs/store/src/public-api",
+        "./dist/store"
+      ],
+      "store/*": [
+        "./libs/store/src/lib/*"
       ],
       "services": [
-        "./dist/services",
-        "./libs/services/src/public-api"
+        "./libs/services/src/public-api.ts",
+        "./libs/services/src/public-api",
+        "./dist/services"
+      ],
+      "components": [
+        "./libs/components/src/public-api.ts",
+        "./libs/components/src/public-api",
+        "./dist/components"
       ]
     },
     "importHelpers": true,
@@ -62,6 +73,12 @@
     },
     {
       "path": "./libs/services/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/components/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/components/tsconfig.spec.json"
     }
   ]
 }

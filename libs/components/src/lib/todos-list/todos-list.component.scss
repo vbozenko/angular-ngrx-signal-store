@@ -1,0 +1,60 @@
+.todos-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.todos-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.app-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0;
+  text-align: center;
+}
+
+.todo-input {
+  width: 100%;
+  max-width: 400px;
+}
+
+.filter-buttons {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 0.25rem;
+}
+
+.todos-container {
+  width: 100%;
+  max-width: 700px;
+}
+
+.todos-list {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 1rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  
+  span {
+    flex: 1;
+  }
+}

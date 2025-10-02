@@ -5,4 +5,9 @@
 		<h1>Signal Todo App</h1>
 		<a href>Go to Github</a>
 	</div>
+	@if (todosStore.loading()) {
+		<mat-spinner></mat-spinner>
+	} @else {
+		<todos-list></todos-list>
+	}
 </div>

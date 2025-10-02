@@ -36,7 +36,8 @@ module.exports = {
     '^ui-components$': '<rootDir>/libs/ui-components/src/public-api.ts',
     '^shared$': '<rootDir>/libs/shared/src/public-api.ts',
     '^store$': '<rootDir>/libs/store/src/public-api.ts',
-    '^services$': '<rootDir>/libs/services/src/public-api.ts'
+    '^services$': '<rootDir>/libs/services/src/public-api.ts',
+    '^components$': '<rootDir>/libs/components/src/public-api.ts'
   },
   
   transformIgnorePatterns: [
