@@ -1,4 +1,4 @@
-import { TodosFilter } from './todos-filter';
+import { TodosFilter } from './todos-filter.model';
 
 describe('TodosFilter', () => {
   describe('Type Definition', () => {
@@ -22,7 +22,7 @@ describe('TodosFilter', () => {
 
     it('should work with array of filter values', () => {
       const filters: TodosFilter[] = ['all', 'pending', 'completed'];
-      
+
       expect(filters).toHaveLength(3);
       expect(filters).toContain('all');
       expect(filters).toContain('pending');
@@ -68,8 +68,8 @@ describe('TodosFilter', () => {
   describe('Usage Patterns', () => {
     it('should work with conditional logic', () => {
       const filters: TodosFilter[] = ['all', 'pending', 'completed'];
-      
-      filters.forEach(filter => {
+
+      filters.forEach((filter) => {
         if (filter === 'all') {
           expect(filter).toBe('all');
         } else if (filter === 'pending') {
@@ -93,9 +93,9 @@ describe('TodosFilter', () => {
           case 'all':
             return todos;
           case 'pending':
-            return todos.filter(todo => !todo.completed);
+            return todos.filter((todo) => !todo.completed);
           case 'completed':
-            return todos.filter(todo => todo.completed);
+            return todos.filter((todo) => todo.completed);
         }
       };
 
@@ -108,11 +108,11 @@ describe('TodosFilter', () => {
       type FilterState = {
         currentFilter: TodosFilter;
         availableFilters: TodosFilter[];
-      }
+      };
 
       const state: FilterState = {
         currentFilter: 'pending',
-        availableFilters: ['all', 'pending', 'completed']
+        availableFilters: ['all', 'pending', 'completed'],
       };
 
       expect(state.currentFilter).toBe('pending');
@@ -144,14 +144,14 @@ describe('TodosFilter', () => {
 
     it('should get all filter values from constant object', () => {
       const allFilters = Object.values(TODOS_FILTERS);
-      
+
       expect(allFilters).toHaveLength(3);
       expect(allFilters).toEqual(['all', 'pending', 'completed']);
     });
 
     it('should work with Object.keys for filter enumeration', () => {
       const filterKeys = Object.keys(TODOS_FILTERS);
-      
+
       expect(filterKeys).toEqual(['ALL', 'pending', 'COMPLETED']);
     });
   });
@@ -159,32 +159,32 @@ describe('TodosFilter', () => {
   describe('Edge Cases and Type Safety', () => {
     it('should maintain type safety with union types', () => {
       type ExtendedFilter = TodosFilter | 'archived';
-      
+
       const isBasicFilter = (filter: ExtendedFilter): filter is TodosFilter =>
         ['all', 'pending', 'completed'].includes(filter);
 
       const extendedFilter: ExtendedFilter = 'archived';
       expect(isBasicFilter(extendedFilter)).toBe(false);
-      
+
       const basicFilter: ExtendedFilter = 'all';
       expect(isBasicFilter(basicFilter)).toBe(true);
     });
 
     it('should work with readonly arrays', () => {
       const readonlyFilters: readonly TodosFilter[] = ['all', 'pending', 'completed'] as const;
-      
+
       expect(readonlyFilters).toHaveLength(3);
       expect([...readonlyFilters]).toEqual(['all', 'pending', 'completed']);
     });
 
     it('should work with Set operations', () => {
       const filterSet = new Set<TodosFilter>(['all', 'pending', 'completed']);
-      
+
       expect(filterSet.size).toBe(3);
       expect(filterSet.has('all')).toBe(true);
       expect(filterSet.has('pending')).toBe(true);
       expect(filterSet.has('completed')).toBe(true);
-      
+
       // Test uniqueness
       filterSet.add('all'); // duplicate
       expect(filterSet.size).toBe(3);

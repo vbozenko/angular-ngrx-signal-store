@@ -6,7 +6,7 @@ setupZonelessTestEnv();
 // Mock for matchMedia (commonly needed for Angular Material components)
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,

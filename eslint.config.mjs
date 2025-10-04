@@ -15,7 +15,14 @@ export default [
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: ['./tsconfig.app.json', './tsconfig.spec.json', './libs/*/tsconfig.lib.json', './libs/*/tsconfig.spec.json'],
+        project: [
+          './tsconfig.json',
+          './tsconfig.app.json',
+          './tsconfig.spec.json',
+          './libs/*/tsconfig.lib.json',
+          './libs/*/tsconfig.spec.json',
+          './libs/*/tsconfig.lib.prod.json',
+        ],
         createDefaultProgram: true,
       },
       globals: {
@@ -35,10 +42,7 @@ export default [
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
       '@typescript-eslint/member-ordering': 'error',
       '@typescript-eslint/no-empty-interface': 'error',
-      '@typescript-eslint/no-inferrable-types': [
-        'error',
-        { ignoreParameters: true },
-      ],
+      '@typescript-eslint/no-inferrable-types': ['error', { ignoreParameters: true }],
       '@typescript-eslint/no-non-null-assertion': 'error',
       '@typescript-eslint/prefer-function-type': 'error',
 
@@ -70,8 +74,8 @@ export default [
       // General rules
       'arrow-body-style': 'error',
       'constructor-super': 'error',
-      'curly': 'error',
-      'eqeqeq': ['error', 'smart'],
+      curly: 'error',
+      eqeqeq: ['error', 'smart'],
       'guard-for-in': 'error',
       'no-bitwise': 'error',
       'no-caller': 'error',
@@ -111,7 +115,7 @@ export default [
       'no-undef-init': 'error',
       'no-var': 'error',
       'prefer-const': 'error',
-      'radix': 'error',
+      radix: 'error',
     },
   },
 
@@ -125,9 +129,31 @@ export default [
       '@angular-eslint/template': angularTemplate,
     },
     rules: {
+      // Core template syntax rules
       '@angular-eslint/template/banana-in-box': 'error',
       '@angular-eslint/template/no-negated-async': 'error',
       '@angular-eslint/template/eqeqeq': 'error',
+      '@angular-eslint/template/conditional-complexity': ['error', { maxComplexity: 4 }],
+      '@angular-eslint/template/cyclomatic-complexity': ['error', { maxComplexity: 5 }],
+
+      // Best practices (available rules only)
+      '@angular-eslint/template/no-any': 'warn',
+      '@angular-eslint/template/no-autofocus': 'error',
+      '@angular-eslint/template/no-duplicate-attributes': 'error',
+      '@angular-eslint/template/no-positive-tabindex': 'error',
+      '@angular-eslint/template/use-track-by-function': 'warn',
+
+      // Security - Allow signal calls but prevent other function calls
+      '@angular-eslint/template/no-call-expression': [
+        'warn',
+        {
+          allowList: [
+            // Specific signals in your app
+          ],
+          allowSuffix: 'Signal',
+          allowPrefix: 'computed',
+        },
+      ],
     },
   },
 
@@ -158,25 +184,26 @@ export default [
       // Build outputs
       'dist/',
       '.angular/',
-      
+      'out-tsc/',
+
       // Dependencies
       'node_modules/',
-      
+
       // Testing
       'coverage/',
-      
+
       // Configuration files
       '*.js',
       '*.mjs',
       'setup-jest.ts',
       'jest.config.js',
       'angular.json',
-      
+
       // IDE and OS files
       '.vscode/',
       '.idea/',
       '.DS_Store',
       'Thumbs.db',
     ],
-  }
+  },
 ];

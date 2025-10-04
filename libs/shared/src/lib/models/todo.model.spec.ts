@@ -5,7 +5,7 @@ describe('Todo Model', () => {
     const todo: Todo = {
       id: '1',
       title: 'Test Todo',
-      completed: false
+      completed: false,
     };
 
     expect(todo).toBeDefined();
@@ -18,7 +18,7 @@ describe('Todo Model', () => {
     const todo: Todo = {
       id: '123',
       title: 'Learn Jest',
-      completed: true
+      completed: true,
     };
 
     expect(typeof todo.id).toBe('string');
@@ -35,11 +35,11 @@ describe('Todo Model', () => {
     // Array matchers
     expect(todos).toHaveLength(2);
     expect(todos).toContainEqual({ id: '1', title: 'First Todo', completed: false });
-    
+
     // String matchers
     expect(todos[0].title).toContain('First');
     expect(todos[1].title).toMatch(/Second/);
-    
+
     // Object matchers
     expect(todos[0]).toMatchObject({ id: '1', completed: false });
   });

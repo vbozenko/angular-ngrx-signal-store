@@ -1,40 +1,36 @@
 <div class="todos-app">
-	<div class="todos-header">
-		<h1 class="app-title">
-			NgRx Signal Store Todo App
-		</h1>
-		<mat-form-field class="todo-input"  appearance="fill">
-			<mat-label>
-				Enter a TODO and press Enter
-			</mat-label>
-			<input #input (keyup.enter)="onAddTodo(input.value)"
-				matInput>
-			<mat-icon matSuffix>edit</mat-icon>
-		</mat-form-field>
-		<mat-button-toggle-group 
-			#toggleFilterButtons 
-			class="filter-buttons"
-			(change)="onFilterTodos($event)">
-				<mat-button-toggle value="all">All</mat-button-toggle>
-				<mat-button-toggle value="pending">Pending</mat-button-toggle>
-				<mat-button-toggle value="completed">Completed</mat-button-toggle>
-		</mat-button-toggle-group>
-	</div>
-	<div class="todos-container">
-		<mat-list class="todos-list">
-			@for (todo of store.filteredTodos(); track todo.id) {
-				<mat-list-item>
-					<div class="todo-item">
-						<mat-checkbox 
-							[checked]="todo.completed" 
-							(change)="onToggleTodo(todo.id, $event.checked)">
-						</mat-checkbox>
-						<span [ngClass]="todo.completed ? 'todo-completed': ''">{{ todo.title }}</span>
-						<mat-icon (click)="onDeleteTodo(todo.id)">delete</mat-icon>
-					</div>
-				</mat-list-item>
-
-			}
-		</mat-list>
-	</div>
+  <div class="todos-header">
+    <h1 class="app-title">NgRx Signal Store Todo App</h1>
+    <mat-form-field class="todo-input" appearance="fill">
+      <mat-label> Enter a TODO and press Enter </mat-label>
+      <input #input (keyup.enter)="onAddTodo(input.value)" matInput />
+      <mat-icon matSuffix>edit</mat-icon>
+    </mat-form-field>
+    <mat-button-toggle-group
+      #toggleFilterButtons
+      class="filter-buttons"
+      (change)="onFilterTodos($event)"
+    >
+      <mat-button-toggle value="all">All</mat-button-toggle>
+      <mat-button-toggle value="pending">Pending</mat-button-toggle>
+      <mat-button-toggle value="completed">Completed</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="todos-container">
+    <mat-list class="todos-list">
+      @for (todo of filteredTodosSignal(); track todo.id) {
+        <mat-list-item>
+          <div class="todo-item">
+            <mat-checkbox
+              [checked]="todo.completed"
+              (change)="onToggleTodo(todo.id, $event.checked)"
+            >
+            </mat-checkbox>
+            <span [ngClass]="todo.completed ? 'todo-completed' : ''">{{ todo.title }}</span>
+            <mat-icon (click)="onDeleteTodo(todo.id)">delete</mat-icon>
+          </div>
+        </mat-list-item>
+      }
+    </mat-list>
+  </div>
 </div>

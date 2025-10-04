@@ -11,6 +11,7 @@ ng generate library <library-name>
 ```
 
 This will:
+
 - Create a new folder under `libs/<library-name>`
 - Add the library configuration to `angular.json`
 - Set up the necessary TypeScript configuration files

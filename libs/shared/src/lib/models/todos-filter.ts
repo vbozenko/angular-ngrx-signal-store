@@ -1,1 +1,0 @@
-export type TodosFilter = 'all' | 'pending' | 'completed';

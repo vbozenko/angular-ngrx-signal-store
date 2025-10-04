@@ -23,9 +23,7 @@
         "./libs/store/src/public-api",
         "./dist/store"
       ],
-      "store/*": [
-        "./libs/store/src/lib/*"
-      ],
+      "store/*": ["./libs/store/src/lib/*"],
       "services": [
         "./libs/services/src/public-api.ts",
         "./libs/services/src/public-api",

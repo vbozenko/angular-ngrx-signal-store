@@ -4,7 +4,12 @@
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(224, 120, 0, 1) 0%,
+    rgba(255, 210, 104, 1) 50%,
+    rgba(90, 52, 0, 1) 100%
+  );
 }
 
 .todos-header {
@@ -54,7 +59,7 @@
   align-items: center;
   gap: 1rem;
   width: 100%;
-  
+
   span {
     flex: 1;
     &.todo-completed {

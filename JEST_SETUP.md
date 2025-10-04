@@ -5,10 +5,12 @@ This project has been configured to use Jest instead of Jasmine/Karma for testin
 ## What was changed?
 
 ### Dependencies
+
 - **Removed:** `@types/jasmine`, `jasmine-core`, `karma`, `karma-chrome-launcher`, `karma-coverage`, `karma-jasmine`, `karma-jasmine-html-reporter`
 - **Added:** `jest`, `@types/jest`, `jest-environment-jsdom`, `jest-preset-angular`, `ts-jest`, `@jest/globals`
 
 ### Configuration Files
+
 - **`jest.config.js`**: Main Jest configuration
 - **`setup-jest.ts`**: Jest setup file with Angular testing environment
 - **`package.json`**: Updated scripts to use Jest
@@ -31,19 +33,24 @@ npm run test:coverage
 ## Features
 
 ### Zoneless Change Detection Support
+
 This setup supports Angular's zoneless change detection, which is enabled in your app. The Jest environment is properly configured to work with `provideZonelessChangeDetection()`.
 
 ### Coverage Reports
+
 Coverage reports are generated in the `coverage/` directory with HTML, text-summary, and LCOV formats.
 
 ### Mocked Browser APIs
+
 Common browser APIs are automatically mocked:
+
 - `matchMedia` (for Angular Material compatibility)
 - `ResizeObserver` (for modern Angular components)
 
 ## Writing Tests
 
 ### Component Tests
+
 ```typescript
 import { TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection } from '@angular/core';
@@ -53,7 +60,7 @@ describe('MyComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MyComponent],
-      providers: [provideZonelessChangeDetection()]
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
   });
 
@@ -66,6 +73,7 @@ describe('MyComponent', () => {
 ```
 
 ### Service Tests
+
 ```typescript
 import { TestBed } from '@angular/core/testing';
 import { MyService } from './my-service';
@@ -85,6 +93,7 @@ describe('MyService', () => {
 ```
 
 ### Unit Tests (Models, Utilities)
+
 ```typescript
 import { MyUtility } from './my-utility';
 
@@ -131,6 +140,7 @@ expect(mockFn).toHaveBeenCalledTimes(2);
 ## Mocking
 
 ### Mock Functions
+
 ```typescript
 const mockFn = jest.fn();
 mockFn.mockReturnValue(42);
@@ -138,11 +148,12 @@ mockFn.mockResolvedValue('async result');
 ```
 
 ### Mock Modules
+
 ```typescript
 jest.mock('./my-service', () => ({
   MyService: jest.fn().mockImplementation(() => ({
-    getData: jest.fn().mockReturnValue('mocked data')
-  }))
+    getData: jest.fn().mockReturnValue('mocked data'),
+  })),
 }));
 ```
 
@@ -151,7 +162,7 @@ jest.mock('./my-service', () => ({
 If you're migrating existing Jasmine tests to Jest:
 
 1. **Replace Jasmine imports**: No need to import Jest functions (they're global)
-2. **Update spy syntax**: 
+2. **Update spy syntax**:
    - Jasmine: `spyOn(obj, 'method')`
    - Jest: `jest.spyOn(obj, 'method')`
 3. **Update mock syntax**:

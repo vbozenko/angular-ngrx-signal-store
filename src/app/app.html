@@ -1,13 +1,10 @@
 <div class="app">
-	<div class="angular-app-container">
-		<img src="https://pbs.twimg.com/profile_banners/1931740574618411008/1749398601/1500x500"
-			alt="Todo App">
-		<h1>Signal Todo App</h1>
-		<a href>Go to Github</a>
-	</div>
-	@if (todosStore.loading()) {
-		<mat-spinner></mat-spinner>
-	} @else {
-		<todos-list></todos-list>
-	}
+  <div class="angular-app-container">
+    <img src="/store.jpg" alt="Todo App" />
+  </div>
+  @if (isLoadingSignal()) {
+    <mat-spinner></mat-spinner>
+  } @else {
+    <todos-list></todos-list>
+  }
 </div>
