@@ -6,7 +6,9 @@
     "outDir": "./out-tsc/spec",
     "types": ["jest", "node"],
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "moduleResolution": "bundler"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.spec.ts", "libs/**/*.spec.ts", "setup-jest.ts"]
 }
