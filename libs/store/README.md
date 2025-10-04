@@ -1,25 +1,68 @@
-# store
+# Store Library
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
+State management library for the NgRx Signal Store Todo Application using NgRx Signals.
 
-## Code scaffolding
+## Overview
 
-Run `ng generate component component-name --project store` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project store`.
+This library contains the reactive state management implementation using NgRx Signal Store, providing a modern alternative to traditional NgRx with reducers and effects.
 
-> Note: Don't forget to add `--project store` or else it will be added to the default project in your `angular.json` file.
+## Exports
 
-## Build
+- **`TodosStore`**: Main signal store for managing todos state
 
-Run `ng build store` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Features
 
-## Publishing
+### State Management
+- **todos**: Array of todo items
+- **loading**: Loading state indicator
+- **filter**: Current filter applied to todos ('all', 'pending', 'completed')
 
-After building your library with `ng build store`, go to the dist folder `cd dist/store` and run `npm publish`.
+### Computed Signals
+- **filteredTodos**: Automatically filtered todos based on current filter
 
-## Running unit tests
+### Methods
+- `loadAll()`: Load all todos from the service
+- `add(title: string)`: Add a new todo item
+- `deleteTodo(id: string)`: Delete a todo by ID
+- `updateTodo(id: string, completed: boolean)`: Update todo completion status
+- `updateFilter(filter: TodosFilter)`: Change the current filter
 
-Run `ng test store` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Further help
+```typescript
+import { TodosStore } from 'store';
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+// In your component
+const store = inject(TodosStore);
+
+// Access state
+const todos = store.todos();
+const loading = store.loading();
+const filteredTodos = store.filteredTodos();
+
+// Perform actions
+store.loadAll();
+store.add('New todo');
+store.updateFilter('completed');
+```
+
+## Dependencies
+
+- `@ngrx/signals`: Modern NgRx signal store
+- `services`: TodosService for data operations
+- `shared`: Todo and TodosFilter types
+
+## Testing
+
+Run tests using Jest:
+```bash
+npm test
+```
+
+The store includes comprehensive test coverage for all methods and state transitions.
+
+## Building
+
+```bash
+ng build store
+```

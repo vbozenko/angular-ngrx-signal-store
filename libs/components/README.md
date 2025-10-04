@@ -1,25 +1,77 @@
-# components
+# Components Library
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
+Reusable UI components for the NgRx Signal Store Todo Application built with Angular Material.
 
-## Code scaffolding
+## Overview
 
-Run `ng generate component component-name --project components` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project components`.
+This library contains all the UI components used in the todo application, designed to be reusable and fully integrated with the NgRx Signal Store.
 
-> Note: Don't forget to add `--project components` or else it will be added to the default project in your `angular.json` file.
+## Components
 
-## Build
+### TodosListComponent
 
-Run `ng build components` to build the project. The build artifacts will be stored in the `dist/` directory.
+The main component for displaying and managing the todo list.
 
-## Publishing
+**Selector**: `todos-list`
 
-After building your library with `ng build components`, go to the dist folder `cd dist/components` and run `npm publish`.
+**Features**:
+- Display filtered todos based on current store filter
+- Add new todo items
+- Toggle todo completion status
+- Delete todo items
+- Filter todos by status (All, Pending, Completed)
+- Material Design UI with Angular Material components
 
-## Running unit tests
+**Dependencies**:
+- Angular Material components (MatFormField, MatInput, MatIcon, MatButtonToggle, MatList, MatCheckbox)
+- Reactive integration with TodosStore
+- Signal-based reactivity
 
-Run `ng test components` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Further help
+```typescript
+import { TodosListComponent } from 'components';
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+@Component({
+  selector: 'app-root',
+  imports: [TodosListComponent],
+  template: `<todos-list></todos-list>`
+})
+export class App {}
+```
+
+```html
+<todos-list></todos-list>
+```
+
+## Component Architecture
+
+- **Signal Integration**: Uses Angular signals for reactive UI updates
+- **Store Integration**: Directly connected to TodosStore for state management
+- **Material Design**: Built with Angular Material for consistent styling
+- **Type Safety**: Full TypeScript integration with shared models
+
+## Styling
+
+Components use Angular Material theming and include custom SCSS for todo-specific styling.
+
+## Testing
+
+Run tests using Jest:
+```bash
+npm test
+```
+
+Components include comprehensive unit tests with mocked dependencies.
+
+## Building
+
+```bash
+ng build components
+```
+
+## Adding New Components
+
+```bash
+ng generate component new-component --project components
+```

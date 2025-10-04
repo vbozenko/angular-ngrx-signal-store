@@ -1,63 +1,108 @@
-# Shared
+# Shared Library
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
+Common models, types, and utilities for the NgRx Signal Store Todo Application.
 
-## Code scaffolding
+## Overview
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+This library contains all the shared models, types, and utility functions used across the todo application. It provides type safety and consistency throughout the application.
 
-```bash
-ng generate component component-name
+## Exports
+
+### Models
+
+#### Todo
+The main data model for todo items.
+
+```typescript
+export type Todo = {
+  id: string;        // Unique identifier
+  title: string;     // Todo description
+  completed: boolean; // Completion status
+};
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+#### TodosFilter
+Type for filtering todo items by status.
 
+```typescript
+export type TodosFilter = 'all' | 'pending' | 'completed';
+```
+
+### Utilities
+
+Additional shared utilities and helper functions (exported from `shared.ts`).
+
+## Usage
+
+```typescript
+import { Todo, TodosFilter } from 'shared';
+
+// Define a todo
+const newTodo: Todo = {
+  id: '123',
+  title: 'Learn NgRx Signals',
+  completed: false
+};
+
+// Use filter type
+const currentFilter: TodosFilter = 'pending';
+
+// Type-safe operations
+function filterTodos(todos: Todo[], filter: TodosFilter): Todo[] {
+  switch (filter) {
+    case 'all':
+      return todos;
+    case 'pending':
+      return todos.filter(todo => !todo.completed);
+    case 'completed':
+      return todos.filter(todo => todo.completed);
+    default:
+      return todos;
+  }
+}
+```
+
+## Type Safety Benefits
+
+- **Consistent Data Structure**: Ensures all parts of the app use the same Todo structure
+- **Filter Validation**: TodosFilter type prevents invalid filter values
+- **IDE Support**: Full IntelliSense and autocomplete support
+- **Compile-time Checking**: Catches type errors during development
+
+## File Structure
+
+```
+src/lib/
+├── shared.ts                 # Utility functions and exports
+└── models/
+    ├── todo.model.ts        # Todo type definition
+    └── todos-filter.model.ts # TodosFilter type definition
+```
+
+## Dependencies
+
+This library has no external dependencies, ensuring minimal bundle size and maximum compatibility.
+
+## Testing
+
+Run tests using Jest:
 ```bash
-ng generate --help
+npm test
 ```
 
 ## Building
-
-To build the library, run:
 
 ```bash
 ng build shared
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-
-   ```bash
-   cd dist/shared
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Adding New Models
 
 ```bash
-ng test
+ng generate interface new-model --project shared
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Add new models to the `models/` directory and export them through `public-api.ts`.
 
 ## Additional Resources
 
